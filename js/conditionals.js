@@ -45,23 +45,54 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
+
 // analyzeColor(randomColor);
 /**
- * TODO:
+ *
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
+function analyzeColor(color) {
+    switch (color) {
+        case("red"): {
+            return "red is the color of my cup!";
+        }
+        case("orange"): {
+            return "oranges dont rhyme";
+        }
+        case("yellow"): {
+            return "yellow as the sun!";
+        }
+        case("green"): {
+            return "green like grass!";
+        }
+        case("blue"): {
+            return "blue is like the sky";
+        }
+        case("indigo"): {
+            return "indigo is a unique blue,";
+        }
+        case("violet"): {
+            return "Violet is like purple and im having troble spelling it";
+        }
+        default:
+            return "I dont know that color!";
+    }
+}
 
 /**
- * TODO:
+ *
  * Prompt the user for a color when the page loads, and pass the input from the
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+//let input= prompt("pick a color");
+//alert(analyzeColor(input));
+
 
 /* ########################################################################## */
 
 /**
- * TODO:
+ *
  * Suppose there's a promotion in Walmart, each customer is given a randomly
  * generated "lucky number" between 0 and 5. If your lucky number is 0 you have
  * no discount, if your lucky number is 1 you'll get a 10% discount, if it's 2,
@@ -79,9 +110,32 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
+function applyDiscount(luckynum, price) {
+    luckynum = Number(luckynum);
+    switch (luckynum) {
+        case(0): {
+            return price;
+        }
+        case(1): {
+            return (price * 0.9);
+        }
+        case(2): {
+            return (price * 0.75);
+        }
+        case(3): {
+            return (price * 0.65);
+        }
+        case(4): {
+            return (price * 0.5);
+        }
+        case(5): {
+            return 0;
+        }
+    }
+}
 
 /**
- * TODO:
+ *
  * Uncomment the line below to generate a random number between 0 and 5.
  * (In this line of code, 0 is inclusive, and 6 is exclusive)
  * Prompt the user for their total bill, then use your `calculateTotal` function
@@ -89,10 +143,11 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
-
+//  var luckyNumber = Math.floor(Math.random() * 6);
+// let answer=prompt("what is your total?");
+// alert("bam! you got lucky number "+luckyNumber+"! your new total is: "+applyDiscount(luckyNumber,answer));
 /**
- * TODO:
+ *
  * Write some JavaScript that uses a `confirm` dialog to ask the user if they
  * would like to enter a number. If they click 'Ok', prompt the user for a
  * number, then use 3 separate alerts to tell the user:
@@ -109,3 +164,38 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+function numbers() {
+    if (confirm("would you like to enter a number?")) {
+
+
+        let inputt = prompt("enter a number");
+        let result = "";
+        if (!isNaN(Number(inputt))&&inputt!=null) {
+            if (Number(inputt) % 2 || Number(inputt)===0) {
+                result += "This number is even..\n";
+            } else {
+                result += "This number is odd..\n";
+            }
+            if (Number(inputt) > 0) {
+                result += "this number is positive!\n";
+            } else {
+                result += "this number is negative!\n";
+            }
+            result += "This number plus 100 is " + (Number(inputt) + 100);
+
+            return alert(result);
+        }
+
+        let retry = confirm("input was not a number, want to try again?");
+        if (retry) {
+            return numbers();
+        }
+    }
+    alert("goodbye");
+    return null;
+
+
+}
+
+
+numbers();
